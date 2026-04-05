@@ -10,6 +10,10 @@
       "type": "registry:component"
     }
   ],
-  "registryDependencies": ["popover", "button", "scroll-area"],
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/popover.json",
+    "https://ui.shadcn.com/r/button.json",
+    "https://ui.shadcn.com/r/scroll-area.json"
+  ],
   "dependencies": ["lucide-react"]
 }
