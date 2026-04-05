@@ -10,6 +10,6 @@
       "type": "registry:component"
     }
   ],
-  "registryDependencies": ["popover", "button", "scroll-area"],
+  "registryDependencies": [],
   "dependencies": ["lucide-react"]
 }
