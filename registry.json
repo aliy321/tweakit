@@ -1,20 +1,21 @@
 {
-  "name": "tweakcn-components",
-  "description": "Theme components from tweakcn",
-  "version": "1.0.0",
-  "components": {
-    "color-scheme-switcher": {
-      "name": "ColorSchemeSwitcher",
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "tweakit",
+  "homepage": "https://github.com/aliy321/tweakit",
+  "items": [
+    {
+      "name": "color-scheme-switcher",
+      "type": "registry:component",
       "title": "Color Scheme Switcher",
       "description": "A theme switcher component with 42 built-in themes and custom CSS support",
       "files": [
         {
-          "type": "component",
-          "path": "registry/color-scheme-switcher.tsx"
+          "path": "color-scheme-switcher.tsx",
+          "type": "registry:component"
         }
       ],
       "registryDependencies": ["popover", "button", "scroll-area"],
       "dependencies": ["@phosphor-icons/react"]
     }
-  }
+  ]
 }
