@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CheckIcon, Palette as PaletteIcon } from "lucide-react";
+import { CheckIcon, Palette as PaletteIcon, X } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -777,17 +777,19 @@ const builtInSchemes: ColorScheme[] = getThemesFromTweakcn();
 interface ColorSchemeSwitcherProps {
   defaultScheme?: string;
   defaultMode?: "light" | "dark";
-  onSchemeChange?: (scheme: ColorScheme) => void;
+  onSchemeChange?: (scheme: ColorScheme | null) => void;
 }
 
 export function ColorSchemeSwitcher({
-  defaultScheme = "modern-minimal",
+  defaultScheme,
   defaultMode = "light",
   onSchemeChange,
 }: ColorSchemeSwitcherProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedScheme, setSelectedScheme] = React.useState<ColorScheme | null>(
-    builtInSchemes.find((s) => s.id === defaultScheme) || null
+    defaultScheme
+      ? builtInSchemes.find((s) => s.id === defaultScheme) || null
+      : null
   );
   const [mode, setMode] = React.useState<"light" | "dark">(defaultMode);
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -815,6 +817,11 @@ export function ColorSchemeSwitcher({
       } else {
         document.documentElement.classList.remove("dark");
       }
+    } else {
+      if (styleRef.current) {
+        styleRef.current.remove();
+        styleRef.current = null;
+      }
     }
   }, [selectedScheme, mode]);
 
@@ -824,6 +831,14 @@ export function ColorSchemeSwitcher({
     setShowCustomInput(false);
     setOpen(false);
     onSchemeChange?.(scheme);
+  };
+
+  const handleClear = () => {
+    setSelectedScheme(null);
+    setCustomCss("");
+    setShowCustomInput(false);
+    setOpen(false);
+    onSchemeChange?.(null);
   };
 
   const handleApplyCustom = () => {
@@ -846,10 +861,10 @@ export function ColorSchemeSwitcher({
   return (
     <div className="flex items-center gap-2 fixed top-4 right-4 z-50">
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger>
+        <PopoverTrigger asChild>
           <Button variant="outline" size="sm" className="justify-start gap-2">
             <PaletteIcon className="h-4 w-4" />
-            <span className="truncate">{selectedScheme?.name || "Select"}</span>
+            <span className="truncate">{selectedScheme?.name || "Select theme"}</span>
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-80 p-2" align="start">
@@ -912,7 +927,20 @@ export function ColorSchemeSwitcher({
           ) : (
             <ScrollArea className="h-[250px]">
               <div className="space-y-1 pr-2">
-                <p className="px-2 py-1 text-sm font-medium">Color Schemes</p>
+                <div className="flex items-center justify-between px-2 py-1">
+                  <p className="text-sm font-medium">Color Schemes</p>
+                  {selectedScheme && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleClear}
+                      className="h-6 px-2 text-xs text-muted-foreground hover:text-destructive"
+                    >
+                      <X className="mr-1 h-3 w-3" />
+                      Clear
+                    </Button>
+                  )}
+                </div>
                 {filteredSchemes.map((scheme) => (
                   <button
                     key={scheme.id}
