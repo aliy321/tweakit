@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CheckIcon, Palette as PaletteIcon } from "@phosphor-icons/react";
+import { CheckIcon, Palette as PaletteIcon } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -844,7 +844,7 @@ export function ColorSchemeSwitcher({
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 fixed top-4 right-4 z-50">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger>
           <Button variant="outline" size="sm" className="justify-start gap-2">

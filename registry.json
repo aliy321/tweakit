@@ -15,7 +15,7 @@
         }
       ],
       "registryDependencies": ["popover", "button", "scroll-area"],
-      "dependencies": ["@phosphor-icons/react"]
+      "dependencies": ["lucide-react"]
     }
   ]
 }
