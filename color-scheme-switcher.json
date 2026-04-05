@@ -1,19 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "color-scheme-switcher",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Color Scheme Switcher",
   "description": "A theme switcher component with 42 built-in themes and custom CSS support",
   "files": [
     {
       "path": "color-scheme-switcher.tsx",
-      "type": "registry:component"
+      "type": "registry:ui"
     }
   ],
-  "registryDependencies": [
-    "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/www/public/registry/styles/new-york/popover.json",
-    "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/www/public/registry/styles/new-york/button.json",
-    "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/www/public/registry/styles/new-york/scroll-area.json"
-  ],
+  "registryDependencies": [],
   "dependencies": ["lucide-react"]
 }
