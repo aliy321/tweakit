@@ -10,6 +10,10 @@
       "type": "registry:component"
     }
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/www/public/registry/styles/new-york/popover.json",
+    "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/www/public/registry/styles/new-york/button.json",
+    "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/www/public/registry/styles/new-york/scroll-area.json"
+  ],
   "dependencies": ["lucide-react"]
 }
